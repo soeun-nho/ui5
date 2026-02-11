@@ -1,0 +1,137 @@
+<mvc:View
+    controllerName="code.cl3.cl3cloudui01.controller.MatView"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:t="sap.ui.table"
+    xmlns:u="sap.ui.unified"
+    xmlns:c="sap.ui.core">
+
+    <Page
+        id="page"
+        title="{i18n>title}">
+
+        <VBox>
+
+            <Panel
+                class="sapUiResponsiveMargin"
+                headerText="{i18n>materialList}"
+                width="50rem">
+
+                <t:Table
+                    rows="{/MatSet}"
+                    selectionMode="MultiToggle"
+                    selectionBehavior="Row"
+                    visibleRowCount="10">
+
+                    <t:extension>
+                        <Title
+                            text="자재 Table" />
+                    </t:extension>
+
+                    <t:columns>
+
+                        <t:Column width="10rem">
+                            <Label text="Material code" />
+                            <t:template>
+                                <Text text="{matnr}" />
+                            </t:template>
+                        </t:Column>
+
+                        <t:Column width="14rem">
+                            <Label text="Material description" />
+                            <t:template>
+                                <Text text="{maktx}" />
+                            </t:template>
+                        </t:Column>
+
+                        <t:Column width="8rem">
+                            <Label text="Complet material" />
+                            <t:template>
+                                <Text text="{vpsta}" />
+                            </t:template>
+                        </t:Column>
+
+                        <t:Column width="8rem">
+                            <Label text="Material Type" />
+                            <t:template>
+                                <Text text="{mtart}" />
+                            </t:template>
+                        </t:Column>
+
+                        <t:Column width="10rem">
+                            <Label text="Material Group" />
+                            <t:template>
+                                <Text text="{matkl}" />
+                            </t:template>
+                        </t:Column>
+
+                    </t:columns>
+
+                </t:Table>
+
+            </Panel>
+
+                <Panel
+                class="sapUiResponsiveMargin"
+                headerText="{i18n>materialList}"
+                width="50rem">
+
+                <t:Table
+                    rows="{mat>/MatSet}"
+                    selectionMode="MultiToggle"
+                    selectionBehavior="Row"
+                    visibleRowCount="10">
+
+                    <t:extension>
+                        <Title
+                            text="자재 Table" />
+                    </t:extension>
+
+                    <t:columns>
+
+                        <t:Column width="10rem">
+                            <Label text="Material code" />
+                            <t:template>
+                                <Text text="{mat>matnr}" />
+                            </t:template>
+                        </t:Column>
+
+                        <t:Column width="14rem">
+                            <Label text="Material description" />
+                            <t:template>
+                                <Text text="{mat>maktx}" />
+                            </t:template>
+                        </t:Column>
+
+                        <t:Column width="8rem">
+                            <Label text="Complet material" />
+                            <t:template>
+                                <Text text="{mat>vpsta}" />
+                            </t:template>
+                        </t:Column>
+
+                        <t:Column width="8rem">
+                            <Label text="Material Type" />
+                            <t:template>
+                                <Text text="{mat>mtart}" />
+                            </t:template>
+                        </t:Column>
+
+                        <t:Column width="10rem">
+                            <Label text="Material Group" />
+                            <t:template>
+                                <Text text="{mat>matkl}" />
+                            </t:template>
+                        </t:Column>
+
+                    </t:columns>
+
+                </t:Table>
+
+            </Panel>
+
+        </VBox>
+
+    </Page>
+
+</mvc:View>

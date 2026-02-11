@@ -1,0 +1,24 @@
+{
+  "generationParameters": {
+    "generationDate": "Tue Feb 10 2026 15:29:18 GMT+0900 (Korean Standard Time)",
+    "generatorPlatform": "Visual Studio Code",
+    "serviceType": "SAP System (ABAP On-Premise)",
+    "metadataFilename": "",
+    "serviceUrl": "http://bgissap1.bgissap.co.kr:8000/sap/opu/odata/sap/ZCL3_11_16_DDL_CDS",
+    "appName": "cl3_cloudui_01",
+    "appTitle": "odata practice",
+    "appDescription": "An SAP Fiori Odata application.",
+    "appNamespace": "code.cl3",
+    "ui5Theme": "sap_horizon",
+    "ui5Version": "1.120.0",
+    "enableCodeAssist": false,
+    "enableEslint": false,
+    "enableTypeScript": false,
+    "showMockDataInfo": true,
+    "generatorVersion": "1.19.5",
+    "template": "Basic V2",
+    "generatorName": "SAP Fiori Application Generator",
+    "entityRelatedConfig": [],
+    "launchText": "To launch the generated application, run the following from the generated application root folder:\n\n```\n    npm start\n```"
+  }
+}
