@@ -14,25 +14,25 @@
     
     <t:columns>
         <t:Column >
-            <Label text="carrid"/>
+            <Label text="Airline code"/>
             <t:template>
                 <Text text="{carrid}"/>
             </t:template>
         </t:Column>
         <t:Column >
-            <Label text="connid"/>
+            <Label text="Connection number"/>
             <t:template>
                 <Text text="{connid}"/>
             </t:template>
         </t:Column>
         <t:Column >
-            <Label text="fldate"/>
+            <Label text="Flight date"/>
             <t:template>
                 <Text text="{Fldate}"/>
             </t:template>
         </t:Column>
         <t:Column >
-            <Label text="bookid"/>
+            <Label text="booking number"/>
             <t:template>
                 <Text text="{bookid}"/>
             </t:template>
@@ -44,7 +44,7 @@
             </t:template>
         </t:Column>
         <t:Column >
-            <Label text="customid"/>
+            <Label text="custom id"/>
             <t:template>
                 <Text text="{customid}"/>
             </t:template>
@@ -71,7 +71,7 @@
             ],
             type: 'sap.ui.model.type.Unit',
             formatOptions: {
-                showMeasure: true
+                showMeasure: false
             }
         }"/>
         </t:template>   
@@ -98,7 +98,7 @@
             ],
             type: 'sap.ui.model.type.Currency',
             formatOptions: {
-                showMeasure: true
+                showMeasure: false
             }
         }"/>
         </t:template>   

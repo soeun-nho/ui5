@@ -3,6 +3,9 @@
     xmlns:t= "sap.ui.table"
     xmlns:u="sap.ui.unified"
     xmlns:c="sap.ui.core"
+    xmlns:viz="sap.viz.ui5.controls"
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+    xmlns:viz.data="sap.viz.ui5.data"
     xmlns="sap.m">
     <Page id="page" title="{i18n>title}">
 
@@ -12,7 +15,7 @@
                 headerText="{i18n>purchaseList}"
                 width="52rem">
     
-    <t:Table
+    <t:Table        id = "prodTable"
                     rows="{/ekkoSet}"
                     selectionMode="MultiToggle"
                     selectionBehavior="Row"
@@ -20,6 +23,13 @@
     
     <t:extension>
         <Title text="구매 Table" />
+        <OverflowToolbar style="Clear">
+		<ToolbarSpacer/>
+		<ToolbarSeparator/>
+		<SearchField placeholder="Filter"
+							search="onSearch"
+							width="15rem"/>
+		</OverflowToolbar>
     </t:extension>
 
      <t:columns>
@@ -57,13 +67,46 @@
                     
 
     </t:columns>
-
     </t:Table>
+    </Panel>
+    
+    <Panel >
+<viz:VizFrame
+    id="idVizFrame"
+    vizType="bubble"
+    height="30rem"
+    width="30rem"
+    uiConfig="{applicationSet:'fiori'}">
+
+    <viz:dataset>
+        <viz.data:FlattenedDataset data="{fli>/FlightSet}">
+            <viz.data:dimensions>
+                <viz.data:DimensionDefinition
+                    name="Airline"
+                    value="{fli>carrid}" />
+            </viz.data:dimensions>
+
+            <viz.data:measures>
+                <viz.data:MeasureDefinition
+                    name="Max"
+                    value="{fli>seatsmax}" />
+                <viz.data:MeasureDefinition
+                    name="Occ"
+                    value="{fli>seatsocc}" />
+            </viz.data:measures>
+        </viz.data:FlattenedDataset>
+    </viz:dataset>
+
+    <viz:feeds>
+        <viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Max" />
+        <viz.feeds:FeedItem uid="valueAxis2" type="Measure" values="Occ" />
+        <viz.feeds:FeedItem uid="bubbleWidth" type="Measure" values="Occ" />
+        <viz.feeds:FeedItem uid="color" type="Dimension" values="Airline" />
+    </viz:feeds>
+</viz:VizFrame>
 
 
     </Panel>
-    
-    
     </VBox>
 
     </Page>
