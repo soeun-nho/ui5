@@ -1,0 +1,71 @@
+<mvc:View controllerName="code.cl3.n11.cl3cloudui08.controller.StudentView"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:t= "sap.ui.table"
+    xmlns:f="sap.ui.layout.form"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+                <VBox>
+    <Panel>
+
+    <t:Table  id="student" rows="{/StudentSet}"
+              >
+    <t:extension>
+        <Title id = "stu" text="Studnet Data"/>
+    </t:extension>
+    
+    <t:columns>
+        <t:Column >
+            <Label text="{/#StudentSet/StdtNo/@sap:label}"/>
+            <t:template>
+                <Text text="{StdtNo}"/>
+            </t:template>
+        </t:Column>
+        <t:Column >
+            <Label text="Major"/>
+            <t:template>
+                <Text text="{Major}"/>
+            </t:template>
+        </t:Column>
+        <t:Column >
+            <Label text="Student Name"/>
+            <t:template>
+                <Text text="{StdtName}"/>
+            </t:template>
+        </t:Column>
+        <t:Column >
+            <Label text="Address"/>
+            <t:template>
+                <Text text="{Addr}"/>
+            </t:template>
+        </t:Column>
+    </t:columns>
+    </t:Table>
+    </Panel>
+
+    <Panel class="sapUiResponsiveMargin" width="660px">
+                <MessageStrip showIcon="true" text="Data control" showCloseButton="false" />
+                <OverflowToolbar >
+                    <ToolbarSpacer />
+                    <Button text="Display" type="Accept" icon="sap-icon://detail-view" press="onDisplay" />
+                    <Button text="Create"  type="Attention" icon="sap-icon://create" press="onCreate"/>
+                    <Button text="Update"  type="Attention" icon="sap-icon://write-new-document" press="onUpdate"/>
+                    <Button text="Delete"  type="Accept" icon="sap-icon://delete" press="onDelete" />
+                </OverflowToolbar>
+                <f:SimpleForm layout="ResponsiveGridLayout" title="Content">
+                    <f:content>
+                        <Label text="{/#StudentSet/StdtNo/@sap:label}" />
+                        <Input id="StdtNo" width="10rem"/>
+                        <Label text="{/#StudentSet/Major/@sap:label}" />
+                        <Input id="Major" width="10rem"/>
+                        <Label text="{/#StudentSet/StdtName/@sap:label}" />
+                        <Input id="StdtName" width="5rem"/>
+                        <Label text="{/#StudentSet/Addr/@sap:label}" />
+                        <Input id="Addr" width="13rem"/>
+                    </f:content>
+                </f:SimpleForm>
+            </Panel>
+
+    </VBox>
+    
+    </Page>
+</mvc:View>
