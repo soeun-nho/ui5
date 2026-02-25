@@ -6,7 +6,7 @@
     >
     <Page id="page" title="{i18n>title}">
 
-        <SplitContainer id="AirlineSplit" initialDetail="detail" initialMaster="master">
+        <SplitContainer id="AirlineSplit" initialDetail="spfliPage" initialMaster="master">
             <masterPages>
                 <Page id="scarr" backgroundDesign="List" title="Airline">
                     <List id="scarrList" items="{/AirlineSet}">
@@ -72,10 +72,49 @@
                         showCloseButton="false"
                         class="sapUiMediumMarginBottom">
                     </MessageStrip>
+                    
+                    <t:Table id="sflight" title="Flight Information" rows="{/FlightSet}">
+                        <t:columns>
+                            <t:Column >
+                                <Label text="{/#FlightSet/Carrid/@sap:label}"/>
+                                <t:template>
+                                    <Text text="{Carrid}" />
+                                </t:template>
+                            </t:Column>
+                            <t:Column >
+                                <Label text="{/#FlightSet/Connid/@sap:label}"/>
+                                <t:template>
+                                    <Text text="{Connid}" />
+                                </t:template>
+                            </t:Column>
+                            <t:Column >
+                                <Label text="{/#FlightSet/Fldate/@sap:label}"/>
+                                <t:template>
+                                    <Text text="{Fldate}" />
+                                </t:template>
+                            </t:Column>
+                            <t:Column >
+                                <Label text="{/#FlightSet/Price/@sap:label}"/>
+                                <t:template>
+                                    <Text text="{Price}" />
+                                </t:template>
+                            </t:Column>
+                            <t:Column >
+                                <Label text="{/#FlightSet/Currency/@sap:label}"/>
+                                <t:template>
+                                    <Text text="{Currency}" />
+                                </t:template>
+                            </t:Column>
+                            <t:Column >
+                                <Label text="{/#FlightSet/Planetype/@sap:label}"/>
+                                <t:template>
+                                    <Text text="{Planetype}" />
+                                </t:template>
+                            </t:Column>
+                            
+                        </t:columns>
 
-                </Page>
-                <Page id="sflightPage" backgroundDesign="List" title="Flights">
-
+                    </t:Table>
                 </Page>
             </detailPages>
         </SplitContainer>
