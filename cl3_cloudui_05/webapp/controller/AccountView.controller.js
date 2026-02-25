@@ -38,6 +38,7 @@ sap.ui.define([
     const oTable = this.byId("accountTable");
     const oBinding = oTable.getBinding("rows");
 
+ 
     oBinding.filter(aFilters);
 }
     });
