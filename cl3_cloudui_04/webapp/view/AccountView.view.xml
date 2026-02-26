@@ -1,14 +1,16 @@
 <mvc:View controllerName="code.cl3.n11.cl3cloudui04.controller.AccountView"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
-    xmlns:t= "sap.ui.table">
+    xmlns:t= "sap.ui.table"
+    xmlns:f="sap.ui.layout.form">
     <Page id="page" title="{i18n>title}">
 
     <VBox>
     <Panel>
 
+<!-- gateway 활용한 서비스 테이블-->
     <t:Table rows="{/AccountSet}"
-             visibleRowCount="4" >
+             visibleRowCount="4" id="accountTable">
     <t:extension>
         <Title id = "account" text="Account Document"/>
     </t:extension>
@@ -54,7 +56,37 @@
     </t:Table>
     </Panel>
 
+<!-- CRUD 위한 폼 -->
+<Panel class="sapUiResponsiveMargin" width="660px">
+    <MessageStrip text="CRUD Form"/>
+    <OverflowToolbar >
+        <ToolbarSpacer />
+        <Button text="Display" type="Accept" icon="sap-icon://detail-view" press="onDisplay"/>
+        <Button text="Create" type="Accept" icon="sap-icon://create" press="onCreate"/>
+        <Button text="Update" type="Attention" icon="sap-icon://write-new-document" press="onUpdate"/>
+        <Button text="Delete" type="Accept" icon="sap-icon://delete" press="onDelete"/>
+    </OverflowToolbar>
+    <f:SimpleForm>
+        <f:content>
+            <Label text="{/#AccountSet/Bukrs/@sap:label}"/>
+            <Input id="bukrs" width="10rem"/>
+            <Label text="{/#AccountSet/Belnr/@sap:label}"/>
+            <Input id="belnr" width="10rem"/>
+            <Label text="{/#AccountSet/Gjahr/@sap:label}"/>
+            <Input id="gjahr" width="10rem"/>
+            <Label text="{/#AccountSet/Blart/@sap:label}"/>
+            <Input id="blart" width="10rem"/>
+            <Label text="{/#AccountSet/Bldat/@sap:label}"/>
+            <Input id="bldat" width="10rem"/>
+            <Label text="{/#AccountSet/Waers/@sap:label}"/>
+            <Input id="waers" width="10rem"/>
+        </f:content>
+    </f:SimpleForm>
     
+</Panel>
+
+    
+<!-- cds view 활용한 서비스 테이블 -->    
     <Panel >
     <t:Table rows="{cds>/AccountSet}"
              visibleRowCount="4" >
