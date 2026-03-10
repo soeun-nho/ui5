@@ -1,0 +1,52 @@
+<mvc:View controllerName="code.cl3.n11.cl3cloudui11.controller.AirView"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:viz="sap.viz.ui5.controls"
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+    xmlns:viz.data="sap.viz.ui5.data"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+
+
+    <Panel>
+    
+    <viz:VizFrame id="idVizFrame" uiConfig="{applicationSet:'fiori'}"
+              vizProperties="{title : {text: 'Seats booking Information', visible : true}}"
+              height='30rem' width="30rem" vizType="radar"> 
+    
+    <viz:dataset> <!--데이터셋 가져오기 및 구조 짜기-->
+       <viz.data:FlattenedDataset data="{/AirSet}"> <!--어떤 데이터셋?-->
+
+        <viz.data:dimensions> <!--분석기준-->
+	        <viz.data:DimensionDefinition name="Carrname" value="{Carrname}" /> <!--항공사id 기준으로-->
+        </viz.data:dimensions>
+
+        <viz.data:measures> <!--분석대상-->
+          <viz.data:MeasureDefinition name="Max" value="{Seatsmax}" /> <!--가격 분석하겠다-->
+        </viz.data:measures>
+
+        <viz.data:measures> <!--분석대상-->
+          <viz.data:MeasureDefinition name="Occ" value="{Seatsocc}" /> <!--가격 분석하겠다-->
+        </viz.data:measures>
+
+      </viz.data:FlattenedDataset>
+    </viz:dataset>
+
+
+    <viz:feeds> <!-- 먹이(실제 내용 채우기)-->
+        <!-- <viz.feeds:FeedItem uid="color" type="Dimension" values="Airline" /> values는 데이터셋 정의해줄 때의 name으로 해줘야됨 -->
+        <viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="Carrname" />
+        <viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Max" />
+        <viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Occ" />
+    </viz:feeds>
+
+    <viz:dependents>
+        <viz:Popover id="idPopOver"></viz:Popover> <!--id 변경!!-->
+    </viz:dependents>
+
+
+    </viz:VizFrame>
+
+    </Panel>
+
+    </Page>
+</mvc:View>

@@ -8,7 +8,7 @@ sap.ui.define([
         onInit() {
         },
         
-        onDisplay: function () {
+        onDisplay() {
 
         // MessageToast.show("Click");
 
@@ -21,8 +21,14 @@ sap.ui.define([
         }
 
         var oContext = oTable.getContextByIndex(aIndex[0]); // 선택한 행의 oData
-        var oObject = oContext.getObject(); // object 출력하기
+        var oObject = oContext.getObject(); 
+
+        //oModel 가져오기
         var oModel = this.getView().getModel();
+
+        console.log("Selected Index:", aIndex[0]);
+        console.log("Selected Data:", oObject);
+        console.log("Selected Model:", oModel);
 
         // OData Read
             oModel.read("/StudentSet('" + oObject.StdtNo + "')", {
@@ -34,6 +40,7 @@ sap.ui.define([
                     this.getView().byId("StdtName").setValue(oReturn.StdtName);
                     this.getView().byId("Addr").setValue(oReturn.Addr);
 
+                    console.log("oReturn : ", oReturn);
                 }.bind(this),
 
                 error: function () {
@@ -42,14 +49,12 @@ sap.ui.define([
 
             });
 
-
-        console.log("Selected Index:", aIndex[0]);
-        console.log("Selected Data:", oObject);
-        console.log("Selected Model:", oModel);
         },
 
         onCreate: function(){
             // MessageToast.show("Create");
+
+            //oModel 가져오기
             var oModel = this.getView().getModel();
 
             var oData = {
@@ -95,14 +100,17 @@ sap.ui.define([
         },
         onDelete() {
         let oModel = this.getView().getModel();
-        let vStdtNo = this.getView().byId("StdtNo").getValue();
-
+ 
+        //테이블로부터 정보 받아오기( oData)
         let aIndex = this.getView().byId("student").getSelectedIndices();
+        let oContext = this.getView().byId("student").getContextByIndex(aIndex[0]);
+        let oData = oContext.getObject();
+
 
         if (aIndex.length < 1) {
           MessageToast.show("학번 입력 필수");
         } else {
-          oModel.remove(`/StudentSet('${vStdtNo}')`, {
+          oModel.remove(`/StudentSet('${oData.StdtNo}')`, {
             success: function () {
               oModel.refresh();
               MessageToast.show("Delete Success");

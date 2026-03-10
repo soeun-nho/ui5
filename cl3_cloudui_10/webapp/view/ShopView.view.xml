@@ -1,0 +1,116 @@
+<mvc:View controllerName="code.cl3.n11.cl3cloudui10.controller.ShopView"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:t= "sap.ui.table"
+    xmlns:f="sap.ui.layout.form">
+    <Page id="page" title="{i18n>title}">
+
+    <VBox>
+    <Panel>
+    <t:Table rows="{/ShopSet}"
+             visibleRowCount="10" id="shopTable">
+        <t:extension>
+            <Title id = "shop" text="Account Document"/>
+            <OverflowToolbar style="Clear">
+                <Button text="Search" press="onCustomSearch" width="10rem" icon="sap-icon://commission-check"/>
+                <Input placeholder="Remark" id="remarkinput" width="15rem"/>
+                <Input placeholder="Document number" id="belnrinput" width="15rem"/>
+                <ToolbarSpacer/>
+                <ToolbarSeparator/>
+            </OverflowToolbar>
+        </t:extension>    
+
+
+    <t:columns>
+        <t:Column >
+            <Label text="{/#ShopSet/Ryear/@sap:label}"/>
+            <t:template>
+                <Text text="{Ryear}"/>
+            </t:template>
+        </t:Column>
+        <t:Column >
+            <Label text="{/#ShopSet/Rbukrs/@sap:label}"/>
+            <t:template>
+                <Text text="{Rbukrs}"/>
+            </t:template>
+        </t:Column>
+        <t:Column >
+            <Label text="{/#ShopSet/Belnr/@sap:label}"/>
+            <t:template>
+                <Text text="{Belnr}"/>
+            </t:template>
+        </t:Column>
+        <t:Column >
+            <Label text="{/#ShopSet/Racct/@sap:label}"/>
+            <t:template>
+                <Text text="{Racct}"/>
+            </t:template>
+        </t:Column>
+        <t:Column >
+            <Label text="{/#ShopSet/Remark/@sap:label}"/>
+            <t:template>
+                <Text text="{Remark}"/>
+            </t:template>
+        </t:Column>
+            <t:Column >
+            <Label text="{/#ShopSet/Hsl/@sap:label}"/>
+            <t:template>
+                 <Text text="{
+                    parts: [
+                        { path: 'Hsl' },
+                        { path: 'Rtccr' }
+                        ],
+                    type: 'sap.ui.model.type.Currency',
+                    formatOptions: {
+                        showMeasure: true
+                        }
+                    }"/>
+            </t:template>
+        </t:Column>
+        <t:Column >
+            <Label text="{/#ShopSet/PostYn/@sap:label}"/>
+            <t:template>
+                <Text text="{PostYn}"/>
+            </t:template>
+        </t:Column>
+    </t:columns>
+
+    </t:Table>
+
+    </Panel>
+
+       <Panel class="sapUiResponsiveMargin" width="660px">
+                <!-- <MessageStrip showIcon="true" text="Data control" showCloseButton="false" /> -->
+                <OverflowToolbar >
+                    <ToolbarSpacer />
+                    <Button text="Clear"  type="Accept" icon="sap-icon://document" press="onClear"/>
+                    <Button text="Display" type="Accept" icon="sap-icon://detail-view" press="onDisplay" />
+                    <Button text="Create"  type="Attention" icon="sap-icon://add-document" press="onCreate"/>
+                    <Button text="Update"  type="Attention" icon="sap-icon://write-new-document" press="onUpdate"/>
+                    <Button text="Delete"  type="Accept" icon="sap-icon://delete" press="onDelete" />
+                </OverflowToolbar>
+                <f:SimpleForm layout="ResponsiveGridLayout" title="Content">
+                    <f:content>
+                        <Label text="{/#ShopSet/Ryear/@sap:label}" />
+                        <Input id="ryear" width="10rem" placeholder="{/#ShopSet/Ryear/@sap:label}" />
+                        <Label text="{/#ShopSet/Rbukrs/@sap:label}" />
+                        <Input id="rbukrs" width="10rem"  placeholder="{/#ShopSet/Rbukrs/@sap:label}"/>
+                        <Label text="{/#ShopSet/Belnr/@sap:label}" />
+                        <Input id="belnr" width="5rem"  placeholder="{/#ShopSet/Belnr/@sap:label}"/>
+                        <Label text="{/#ShopSet/Racct/@sap:label}" />
+                        <Input id="racct" width="13rem"  placeholder="{/#ShopSet/Racct/@sap:label}"/>
+                        <Label text="{/#ShopSet/Remark/@sap:label}" />
+                        <Input id="remark" width="10rem"  placeholder="{/#ShopSet/Remark/@sap:label}"/>
+                        <Label text="{/#ShopSet/Hsl/@sap:label}" />
+                        <Input id="hsl" width="10rem"  placeholder="{/#ShopSet/Hsl/@sap:label}" />
+                        <Label text="{/#ShopSet/Rtcur/@sap:label}" />
+                        <Input id="rtcur" width="5rem"  placeholder="{/#ShopSet/Rtcur/@sap:label}"/>
+                        <Label text="{/#ShopSet/PostYn/@sap:label}" />
+                        <Input id="postYn" width="13rem"  placeholder="{/#ShopSet/PostYn/@sap:label}"/>
+                    </f:content>
+                </f:SimpleForm>
+            </Panel>
+    </VBox>
+
+    </Page>
+</mvc:View>
